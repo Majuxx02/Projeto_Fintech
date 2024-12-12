@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface de Finanças</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Importa Chart.js -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link para o arquivo CSS externo -->
+</head>
+
+<body>
+    <!-- Tela Inicial -->
+    <div class="screen">
+        <div class="header">
+            <span>☰</span>
+            Tela Inicial
+            <span>🔍</span>
+        </div>
+
+        <div class="content summary financial-summary">
+            <h2>Resumo financeiro:</h2>
+            <p><u>Saldo disponível:</u> <span>R$ 6.300,50</span></p>
+            <p><u>Gastos do mês:</u> <span>R$ 4.200,00</span></p>
+        </div>
+
+        <div class="content">
+            <p><u>Lazer:</u> <span>R$ 800,50</span></p>
+            <p><u>Mercado:</u> <span>R$ 1.800,00</span></p>
+            <p><u>Educação:</u> <span>R$ 2.100,00</span></p>
+            <p><u>Gastos diversos:</u> <span>R$ 630,50</span></p>
+        </div>
+
+        <div>
+            <p><strong>Fizemos um gráfico para que você possa visualizar melhor seus gastos!</strong></p>
+            <canvas id="expenseChart" width="300" height="200"></canvas>
+        </div>
+    </div>
+
+    <!-- Transações Recentes -->
+    <div class="screen">
+        <div class="header">
+            <span>☰</span>
+            Transações Recentes
+            <span>🔍</span>
+        </div>
+        <div class="content">
+            <h2>Filtrar por período: dia e mês <span>🔍</span></h2>
+            <div class="transaction">
+                <h3>Lazer</h3>
+                <p>Shopping, salão de beleza, compras online</p>
+                <p><strong>R$ 800,50</strong></p>
+            </div>
+            <div class="transaction">
+                <h3>Mercado</h3>
+                <p>Compras de supermercado</p>
+                <p><strong>R$ 1.800,00</strong></p>
+            </div>
+            <div class="transaction">
+                <h3>Educação</h3>
+                <p>Boleto de faculdade</p>
+                <p><strong>R$ 2.100,00</strong></p>
+            </div>
+            <div class="transaction">
+                <h3>Gastos Diversos</h3>
+                <p>Carro, Aquário</p>
+                <p><strong>R$ 630,50</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagamentos -->
+    <div class="screen">
+        <div class="header">
+            Pagamentos
+            <span>💡</span>
+        </div>
+        <div class="content">
+            <div class="payment-option">
+                <img src= "boleto-simbolo.png" alt="Ícone boleto"> Pagar boleto
+            </div>
+            <div class="payment-option">
+                <img src="transferencia-de-pagamento.jpg" Ícone transferência"> Fazer transferência
+            </div>
+            <div class="payment-option">
+                <img src="debito.jpg" alt="Ícone débito"> Débito automático
+            </div>
+            <div class="payment-option">
+                <img src="pix img.jpg" alt="Ícone Pix"> Pagar com Pix
+            </div>
+        </div>
+    </div>
+
+    <!-- Perfil -->
+    <div class="screen">
+        <div class="header">
+            Perfil
+        </div>
+        <div class="content profile">
+            <img src="https://via.placeholder.com/80" alt="Foto de perfil">
+            <h2>Maria Julia Santos</h2>
+            <div class="profile-options">
+                <div class="payment-option">✎ Dados do perfil</div>
+                <div class="payment-option">🔒 Alterar senha</div>
+                <div class="payment-option">⚙️ Configurações</div>
+                <div class="payment-option">🔔 Notificações</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('expenseChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lazer', 'Mercado', 'Educação', 'Gastos diversos'],
+                datasets: [{
+                    label: 'Seus Gastos no Mês de Agosto',
+                    data: [800.50, 1800.00, 2100.00, 630.50],
+                    backgroundColor: ['#6C63FF', '#F67280', '#FFAA64', '#84DCC6'],
+                    borderColor: ['#5A57E5', '#E15B6C', '#E69955', '#6FCAB7'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
